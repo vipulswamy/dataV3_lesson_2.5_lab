@@ -33,7 +33,8 @@ from sakila.film;
 SELECT time_format(round (avg(length),2), '%H:%i') as "AVG movie duration"
 from sakila.film
 limit 3;
--- i tried to convert it to hours minutes in vai
+
+
 /*
 How many distinct (different) actors' last names are there?
 */
@@ -44,11 +45,11 @@ Since how many days has the company been operating (check DATEDIFF() function)?
 */
 -- my approach: find out the first and the latest customer and their purchasing records
 select DATEDIFF('2006/02/14', '2006/02/14') as "operating years" from sakila.customer;
+SELECT abs(DATEDIFF(min(rental_date), max(rental_date))) FROM rental;
     
+-- Show rental info with additional columns month and weekday. Get 20 results.
+SELECT *, month(rental_date), weekday(rental_date) as weekday FROM rental;    
 
-/*
-Show rental info with additional columns month and weekday. Get 20 results.
-*/
 
 -- month and weekday  coloumn
 SELECT *, substr(last_update,6,2) AS "months",substr(last_update,9,2) AS "months"  FROM sakila.film
